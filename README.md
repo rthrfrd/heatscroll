@@ -8,6 +8,8 @@ https://github.com/user-attachments/assets/ad066b30-d3d4-4738-930d-09465c881911
 
 ## Extension Settings
 
+Due to the nature of how scrollbar decorations are implemented in the VSCode API, for simplicity's sake most changes will require a restart to take effect.
+
 * `heatscroll.alpha`: Maximum heat map opacity.
 * `heatscroll.decayRate`: How quickly new heat map activity erases old heat map activity.
 * `heatscroll.decayIntervalMs`: How quickly the heat map decays without any activity.
@@ -19,6 +21,10 @@ https://github.com/user-attachments/assets/ad066b30-d3d4-4738-930d-09465c881911
 
 ## Release Notes
 
+### 0.0.3
+
+- Added `heatscroll.toggle` command.
+
 ### 0.0.2
 
 - Added `heatscroll.lineThreshold` setting.
@@ -26,3 +32,7 @@ https://github.com/user-attachments/assets/ad066b30-d3d4-4738-930d-09465c881911
 ### 0.0.1
 
 - Initial release.
+
+----
+
+_A [Picle](https://picle.fi/) a day keeps the brainrot away._

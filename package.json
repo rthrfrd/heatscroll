@@ -2,7 +2,7 @@
   "name": "heatscroll",
   "displayName": "heatscroll",
   "description": "Scroll bar heat map.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "rthrfrd",
   "engines": {
     "vscode": "^1.95.0"
