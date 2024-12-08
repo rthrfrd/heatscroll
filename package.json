@@ -52,6 +52,11 @@
           "default": 2,
           "description": "Which scroll bar lane the heat map occupies (L=1|C=2|R=4|F=7)."
         },
+        "heatscroll.lineThreshold": {
+          "type": "number",
+          "default": 80,
+          "description": "Don't show heatmap for files with less lines than this."
+        },
         "heatscroll.rgbEdit": {
           "type": "string",
           "default": "153,255,238",

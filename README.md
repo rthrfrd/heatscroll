@@ -13,6 +13,7 @@ https://github.com/user-attachments/assets/ad066b30-d3d4-4738-930d-09465c881911
 * `heatscroll.decayIntervalMs`: How quickly the heat map decays without any activity.
 * `heatscroll.drawIntervalMs`: How frequently the heat map is redrawn.
 * `heatscroll.lane`: Which scroll bar lane the heat map occupies (L=1|C=2|R=4|F=7).
+* `heatscroll.lineThreshold`: Don't show heatmap for files with less lines than this..
 * `heatscroll.rgbEdit`: Comma-separated RGB heat map color for editing.
 * `heatscroll.rgbScroll`: Comma-separated RGB heat map color for scrolling.
 

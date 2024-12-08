@@ -9,6 +9,7 @@ const vscode = require('vscode');
 class Config {
     alphaMax;
     lane;
+    lineThreshold;
     rgbForEditing;
     rgbForVisibility;
     decayRate;
@@ -24,6 +25,7 @@ class Config {
 
         this.alphaMax = parseFloat('' + (section.get("alpha", 0.66) || 0.66));
         this.lane = (section.get("lane", vscode.OverviewRulerLane.Center) || vscode.OverviewRulerLane.Center);
+        this.lineThreshold = parseInt('' + (section.get("lineThreshold", 100) || 100), 10);
         this.rgbForEditing = (section.get("rgbEdit", "153,255,238") || "153,255,238").split(",");
         this.rgbForVisibility = (section.get("rgbScroll", "255,68,191") || "255,68,191").split(",");
         this.decayRate = parseFloat('' + (section.get("decayRate", 0.001) || 0.001));
@@ -102,14 +104,16 @@ class Renderer {
         const bucketCount = bucketIntensities.length;
 
         const decorationsByAlpha = [];
-        for (let b = 0; b < bucketCount; ++b) {
-            const alphaLevel = Math.floor((alphaLevels - 1) * bucketIntensities[b]);
-            const lineNumberFrom = Math.floor((b / (bucketCount - 1)) * (lineCount - 1));
-            const lineNumberTo = Math.max(Math.floor(((b + 1) / (bucketCount - 1)) * (lineCount - 1)) - 1, 0);
-            const range = new vscode.Range(new vscode.Position(lineNumberFrom, 0), new vscode.Position(lineNumberTo, 0));
+        if (lineCount >= config.lineThreshold) {
+            for (let b = 0; b < bucketCount; ++b) {
+                const alphaLevel = Math.floor((alphaLevels - 1) * bucketIntensities[b]);
+                const lineNumberFrom = Math.floor((b / (bucketCount - 1)) * (lineCount - 1));
+                const lineNumberTo = Math.max(Math.floor(((b + 1) / (bucketCount - 1)) * (lineCount - 1)) - 1, 0);
+                const range = new vscode.Range(new vscode.Position(lineNumberFrom, 0), new vscode.Position(lineNumberTo, 0));
 
-            decorationsByAlpha[alphaLevel] = decorationsByAlpha[alphaLevel] || [];
-            decorationsByAlpha[alphaLevel].push({range});
+                decorationsByAlpha[alphaLevel] = decorationsByAlpha[alphaLevel] || [];
+                decorationsByAlpha[alphaLevel].push({range});
+            }
         }
 
         for (let alphaLevel = 0; alphaLevel < alphaLevels; ++alphaLevel) {
