@@ -19,6 +19,10 @@ https://github.com/user-attachments/assets/ad066b30-d3d4-4738-930d-09465c881911
 
 ## Release Notes
 
+### 0.0.2
+
+- Added `heatscroll.lineThreshold` setting.
+
 ### 0.0.1
 
-Initial release.
+- Initial release.
