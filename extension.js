@@ -97,14 +97,14 @@ class Renderer {
      * @param {vscode.TextEditor} editor
      * @param {Tracker} tracker
      */
-    drawFor (editor, tracker) {
+    drawFor (editor, tracker, enabled) {
         const fileName = editor.document.fileName;
         const lineCount = editor.document.lineCount;
         const bucketIntensities = tracker.bucketIntensitiesFor(fileName);
         const bucketCount = bucketIntensities.length;
 
         const decorationsByAlpha = [];
-        if (lineCount >= config.lineThreshold) {
+        if (enabled && lineCount >= config.lineThreshold) {
             for (let b = 0; b < bucketCount; ++b) {
                 const alphaLevel = Math.floor((alphaLevels - 1) * bucketIntensities[b]);
                 const lineNumberFrom = Math.floor((b / (bucketCount - 1)) * (lineCount - 1));
@@ -133,6 +133,7 @@ class Renderer {
 // ----- //
 
 
+let enabled = true;
 const config = new Config();
 
 const visibilityTracker = new Tracker();
@@ -220,16 +221,14 @@ function activate (context) {
     drawInterval = setInterval(function draw () {
         const editor = vscode.window.activeTextEditor;
         if (editor) {
-            visibilityRenderer.drawFor(editor, visibilityTracker);
-            editingRenderer.drawFor(editor, editingTracker);
+            visibilityRenderer.drawFor(editor, visibilityTracker, enabled);
+            editingRenderer.drawFor(editor, editingTracker, enabled);
         }
     }, config.drawIntervalMs);
 
-    /*/ @todo Command to reset state for file or all files
     context.subscriptions.push(vscode.commands.registerCommand('heatscroll.toggle', function onToggle () {
-
+        enabled = !enabled;
     }));
-    //*/
 }
 
 function deactivate () {
