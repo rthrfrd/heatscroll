@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.4]
+
+- Fix: Avoid errors when editor is not available.
+
 ## [0.0.3]
 
 - Added `heatscroll.toggle` command.

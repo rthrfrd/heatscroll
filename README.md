@@ -23,6 +23,10 @@ Due to the nature of how scrollbar decorations are implemented in the VSCode API
 
 ## Release Notes
 
+### 0.0.4
+
+- Fix: Avoid errors when editor is not available.
+
 ### 0.0.3
 
 - Added `heatscroll.toggle` command.
