@@ -1,0 +1,76 @@
+{
+  "name": "heatscroll",
+  "displayName": "heatscroll",
+  "description": "Scroll bar heat map.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rthrfrd/heatscroll.git"
+  },
+  "main": "./extension.js",
+  "files": [],
+  "contributes": {
+    "commands": [{
+      "command": "heatscroll.toggle",
+      "title": "Heatscroll: Toggle"
+    }],
+    "configuration": {
+      "title": "Heatscroll",
+      "properties": {
+        "heatscroll.alpha": {
+          "type": "number",
+          "default": 0.66,
+          "description": "Maximum heat map opacity."
+        },
+        "heatscroll.decayRate": {
+          "type": "number",
+          "default": 0.001,
+          "description": "How quickly new heat map activity erases old heat map activity."
+        },
+        "heatscroll.decayIntervalMs": {
+          "type": "number",
+          "default": 1000,
+          "description": "How quickly the heat map decays without any activity."
+        },
+        "heatscroll.drawIntervalMs": {
+          "type": "number",
+          "default": 200,
+          "description": "How frequently the heat map is redrawn."
+        },
+        "heatscroll.lane": {
+          "type": "number",
+          "default": 2,
+          "description": "Which scroll bar lane the heat map occupies (L=1|C=2|R=4|F=7)."
+        },
+        "heatscroll.rgbEdit": {
+          "type": "string",
+          "default": "153,255,238",
+          "description": "Comma-separated RGB heat map color for editing."
+        },
+        "heatscroll.rgbScroll": {
+          "type": "string",
+          "default": "255,68,191",
+          "description": "Comma-separated RGB heat map color for scrolling."
+        }
+      }
+    }
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "eslint": "^9.13.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
