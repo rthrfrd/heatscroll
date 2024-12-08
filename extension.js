@@ -176,14 +176,16 @@ function activate (context) {
 
     /** @param {vscode.TextEditor} editor */
     function updateLineVisibility (editor) {
-        for (const range of editor.visibleRanges) {
-            visibilityTracker.recordLines(
-                editor.document.fileName,
-                range.start.line,
-                range.end.line,
-                editor.document.lineCount,
-                config.decayRate
-            );
+        if (editor) {
+            for (const range of editor.visibleRanges) {
+                visibilityTracker.recordLines(
+                    editor.document.fileName,
+                    range.start.line,
+                    range.end.line,
+                    editor.document.lineCount,
+                    config.decayRate
+                );
+            }
         }
     }
 
