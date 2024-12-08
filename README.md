@@ -1,5 +1,7 @@
 # Heatscroll
 
+__[Install via the VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=rthrfrd.heatscroll)__
+
 Heatscroll is a heat map in your scroll bar that gives you an automatic visual history of where you've been in the files you are editing.
 
 This is particularly useful for people regularly working in large files, or on smaller screens.
