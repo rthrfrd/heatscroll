@@ -18,8 +18,6 @@ https://github.com/user-attachments/assets/ad066b30-d3d4-4738-930d-09465c881911
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 0.0.1
 
 Initial release.
